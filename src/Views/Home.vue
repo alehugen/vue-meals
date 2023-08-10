@@ -1,8 +1,15 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import store from '../store'
+import { api } from '../services/api'
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+const ingredients = ref([])
+
+onMounted(async () => {
+  const response = await api.get('/list.php?i=list')
+  ingredients.value = response.data.meals
+})
 </script>
 
 <template>
