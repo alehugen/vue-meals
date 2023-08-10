@@ -2,7 +2,6 @@
 import { computed } from 'vue'
 import store from '../store'
 
-const meals = computed(() => store.state.meals)
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 </script>
 
@@ -14,7 +13,11 @@ const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
       placeholder="Busque receitas"
     />
     <section class="flex gap-2 justify-center mt-2">
-      <router-link to="/" v-for="letter of letters">
+      <router-link
+        :to="{ name: 'byLetter', params: { letter } }"
+        v-for="letter of letters"
+        :key="letter"
+      >
         {{ letter }}
       </router-link>
     </section>
