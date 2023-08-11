@@ -14,14 +14,12 @@ function searchMeals() {
 
 onMounted(() => {
   keyword.value = route.params.name
-  if (keyword.value) {
-    searchMeals()
-  }
+  if (keyword.value) searchMeals()
 })
 </script>
 
 <template>
-  <section class="p-8">
+  <section class="p-8 pb-0">
     <input
       type="text"
       class="rounded border-2 border-gray-200 w-full"
@@ -36,7 +34,7 @@ onMounted(() => {
       :key="meal.idMeal"
       class="bg-white shadow rounded-xl"
     >
-      <router-link to="/">
+      <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
         <img
           :src="meal.strMealThumb"
           :alt="meal.strMeal"
