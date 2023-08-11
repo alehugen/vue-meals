@@ -21,10 +21,18 @@ function searchMeals() {
     />
   </section>
   <section class="grid grid-cols-1 md:grid-cols-5 gap-3 p-8">
-    <div v-for="meal of meals" :key="meal.idMeal">
-      <img :src="meal.strMealThumb" :alt="meal.strMeal" />
-      <h3>{{ meal.strMeal }}</h3>
-      <div>
+    <div
+      v-for="meal of meals"
+      :key="meal.idMeal"
+      class="bg-white shadow rounded-xl"
+    >
+      <img
+        :src="meal.strMealThumb"
+        :alt="meal.strMeal"
+        class="rounded-t-xl w-full h-48 object-cover"
+      />
+      <h3 class="p-3 font-semibold">{{ meal.strMeal }}</h3>
+      <div class="p-3">
         <a href="">Youtube</a>
         <router-link to="/"> Ver Receita </router-link>
       </div>
