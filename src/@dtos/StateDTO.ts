@@ -1,3 +1,6 @@
 export interface StateProps {
-  meals: string[],
+  searchedMeals: {
+    loading: boolean,
+    data: []
+  },
 }

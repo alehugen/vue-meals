@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import store from '../store'
+import { onMounted, ref } from 'vue'
 import { api } from '../services/api'
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
@@ -14,11 +13,6 @@ onMounted(async () => {
 
 <template>
   <header class="flex flex-col p-8">
-    <input
-      type="text"
-      class="rounded border-2 border-gray-200 w-full"
-      placeholder="Busque receitas"
-    />
     <section class="flex gap-2 justify-center mt-2">
       <router-link
         :to="{ name: 'byLetter', params: { letter } }"
