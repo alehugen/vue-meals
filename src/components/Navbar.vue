@@ -6,7 +6,7 @@
       :to="{ name: 'home' }"
       class="inline-flex items-center h-full transition-colors hover:bg-orange-400 px-2"
     >
-      Home
+      Página Inicial
     </router-link>
     <nav class="flex items-center gap-1">
       <router-link

@@ -1,13 +1,23 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import store from '../store'
+import { useRoute } from 'vue-router'
+import YT_LOGO from '../assets/yt-logo.png'
 
+const route = useRoute()
 const keyword = ref('')
 const meals = computed(() => store.state.searchedMeals)
 
 function searchMeals() {
   store.dispatch('searchMeals', keyword.value)
 }
+
+onMounted(() => {
+  keyword.value = route.params.name
+  if (keyword.value) {
+    searchMeals()
+  }
+})
 </script>
 
 <template>
@@ -26,15 +36,22 @@ function searchMeals() {
       :key="meal.idMeal"
       class="bg-white shadow rounded-xl"
     >
-      <img
-        :src="meal.strMealThumb"
-        :alt="meal.strMeal"
-        class="rounded-t-xl w-full h-48 object-cover"
-      />
-      <h3 class="p-3 font-semibold">{{ meal.strMeal }}</h3>
-      <div class="p-3">
-        <a href="">Youtube</a>
-        <router-link to="/"> Ver Receita </router-link>
+      <router-link to="/">
+        <img
+          :src="meal.strMealThumb"
+          :alt="meal.strMeal"
+          class="rounded-t-xl w-full h-48 object-cover"
+        />
+      </router-link>
+      <h3 class="p-3 font-semibold text-center">{{ meal.strMeal }}</h3>
+      <div class="p-3 flex">
+        <a
+          :href="meal.strYoutube"
+          target="_blank"
+          class="w-24 flex justify-center"
+        >
+          <img :src="YT_LOGO" alt="logo youtube" />
+        </a>
       </div>
     </div>
   </section>
