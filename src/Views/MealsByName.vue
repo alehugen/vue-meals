@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from 'vue'
 import store from '../store'
 import { useRoute } from 'vue-router'
-import YT_LOGO from '../assets/yt-logo.png'
+import YoutubeButton from '../components/YoutubeButton.vue'
 
 const route = useRoute()
 const keyword = ref('')
@@ -25,7 +25,7 @@ onMounted(() => {
       class="rounded border-2 border-gray-200 w-full"
       placeholder="Busque receitas"
       v-model="keyword"
-      @change="searchMeals"
+      @input="searchMeals"
     />
   </section>
   <section class="grid grid-cols-1 md:grid-cols-5 gap-3 p-8">
@@ -43,13 +43,7 @@ onMounted(() => {
       </router-link>
       <h3 class="p-3 font-semibold text-center">{{ meal.strMeal }}</h3>
       <div class="p-3 flex">
-        <a
-          :href="meal.strYoutube"
-          target="_blank"
-          class="w-24 flex justify-center"
-        >
-          <img :src="YT_LOGO" alt="logo youtube" />
-        </a>
+        <YoutubeButton :link="meal.strYoutube" />
       </div>
     </div>
   </section>
