@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { api } from '../services/api'
+import Meals from '../components/Meals.vue'
+import randomLetters from '../utils/randomLetters'
 
-const ingredients = ref([])
+const meals = ref([])
 
 onMounted(async () => {
-  const response = await api.get('/list.php?i=list')
-  ingredients.value = response.data.meals
+  const { data } = await api.get(`/search.php?s=${randomLetters()}`)
+  meals.value = data.meals
 })
 </script>
 
 <template>
   <header class="flex flex-col p-8"></header>
+  <Meals :meals="meals" />
 </template>
