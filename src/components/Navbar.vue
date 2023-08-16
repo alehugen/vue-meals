@@ -20,7 +20,7 @@
         >Receitas por Letras</router-link
       >
       <router-link
-        :to="{ name: 'byIngredients' }"
+        :to="{ name: 'ingredients' }"
         class="inline-flex items-center px-2 h-full transition-colors hover:bg-orange-400"
         >Receitas por Ingredientes</router-link
       >

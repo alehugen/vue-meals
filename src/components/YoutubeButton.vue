@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import YT_LOGO from '../assets/yt-logo.png'
 
-const props = defineProps({
+const { link } = defineProps({
   link: String
 })
 </script>
