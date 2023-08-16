@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import YT_LOGO from '../assets/yt-logo.png'
 
 const props = defineProps({

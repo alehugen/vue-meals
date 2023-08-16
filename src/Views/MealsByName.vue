@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from 'vue'
 import store from '../store'
 import { useRoute } from 'vue-router'
-import YoutubeButton from '../components/YoutubeButton.vue'
+import MealItem from '../components/MealItem.vue'
 
 const route = useRoute()
 const keyword = ref('')
@@ -13,7 +13,7 @@ function searchMeals() {
 }
 
 onMounted(() => {
-  keyword.value = route.params.name
+  keyword.value = route.params.name as string
   if (keyword.value) searchMeals()
 })
 </script>
@@ -25,26 +25,11 @@ onMounted(() => {
       class="rounded border-2 border-gray-200 w-full"
       placeholder="Busque receitas"
       v-model="keyword"
-      @input="searchMeals"
+      @change="searchMeals"
     />
   </section>
+
   <section class="grid grid-cols-1 md:grid-cols-5 gap-3 p-8">
-    <div
-      v-for="meal of meals"
-      :key="meal.idMeal"
-      class="bg-white shadow rounded-xl"
-    >
-      <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
-        <img
-          :src="meal.strMealThumb"
-          :alt="meal.strMeal"
-          class="rounded-t-xl w-full h-48 object-cover"
-        />
-      </router-link>
-      <h3 class="p-3 font-semibold text-center">{{ meal.strMeal }}</h3>
-      <div class="p-3 flex">
-        <YoutubeButton :link="meal.strYoutube" />
-      </div>
-    </div>
+    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
   </section>
 </template>
