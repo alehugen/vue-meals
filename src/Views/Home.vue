@@ -13,6 +13,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <header class="flex flex-col p-8"></header>
+  <header class="flex flex-col p-4"></header>
   <Meals :meals="meals" />
 </template>
