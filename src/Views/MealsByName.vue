@@ -26,7 +26,7 @@ onMounted(() => {
   <section class="p-8 pb-0">
     <input
       type="text"
-      class="rounded border-2 border-gray-200 w-full"
+      class="rounded border-2 border-gray-200 w-full focus:ring-orange-500 focus:border-orange-500"
       placeholder="Busque receitas"
       v-model="keyword"
       @change="searchMeals"
