@@ -16,7 +16,7 @@ onMounted(async () => {
   <div class="p-8">
     <h1 class="text-4xl font-bold mb-4">Ingredientes</h1>
     <router-link
-      :to="{ name: 'byIngredients', params: { ingredients: i.idIngredient } }"
+      :to="{ name: 'byIngredients', params: { ingredients: i.strIngredient } }"
       v-for="i of ingredients"
       :key="i"
       class="block bg-white rounded p-3 mb-3 shadow"

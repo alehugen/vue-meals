@@ -2,7 +2,7 @@
 import { computed, onMounted, watch } from 'vue'
 import store from '../store'
 import { useRoute } from 'vue-router'
-import MealItem from '../components/MealItem.vue'
+import Meals from '../components/Meals.vue'
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 const meals = computed(() => store.state.mealsByLetter)
@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="flex gap-2 justify-center mt-2">
+  <section class="flex gap-2 justify-center mt-5 mb-5">
     <router-link
       :to="{ name: 'byLetter', params: { letter } }"
       v-for="letter of letters"
@@ -28,7 +28,5 @@ onMounted(() => {
     </router-link>
   </section>
 
-  <section class="grid grid-cols-1 md:grid-cols-5 gap-3 p-8">
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
-  </section>
+  <Meals :meals="meals" />
 </template>
